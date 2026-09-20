@@ -268,57 +268,6 @@
     transition: transform 0.3s ease, opacity 0.3s ease;
   }
 
-  /* ---------- Decorative wave background (reusable) ---------- */
-  /* Drop <div class="wave-bg" aria-hidden="true">…svg…</div> as the
-     first child of any element with position:relative + overflow:hidden
-     (add the .has-waves utility if the section doesn't already have that)
-     to get the same flowing-line motif behind hero, FAQ, or CTA sections. */
-
-  .has-waves {
-    position: relative;
-    overflow: hidden;
-  }
-
-  .wave-bg {
-    position: absolute;
-    inset: 0;
-    z-index: 0;
-    pointer-events: none;
-  }
-
-  .wave-bg svg {
-    display: block;
-    width: 100%;
-    height: 100%;
-    will-change: transform;
-  }
-
-  .wave-bg path {
-    fill: none;
-    stroke: #7C8F6E;
-    stroke-width: 1.2;
-    stroke-linecap: round;
-  }
-
-  .wave-bg .wave-1 { opacity: 0.22; }
-  .wave-bg .wave-2 { opacity: 0.18; }
-  .wave-bg .wave-3 { opacity: 0.25; }
-
-  .wave-bg--animated svg {
-    animation: wave-drift 38s ease-in-out infinite alternate;
-  }
-
-  @keyframes wave-drift {
-    from { transform: translateX(0); }
-    to   { transform: translateX(-2.5%); }
-  }
-
-  @media (prefers-reduced-motion: reduce) {
-    .wave-bg--animated svg {
-      animation: none;
-    }
-  }
-
   /* ---------- Hero ---------- */
 
   .hero {
@@ -329,6 +278,33 @@
     padding-top: 168px;
     overflow: hidden;
     background-color: var(--bg);
+  }
+
+  .hero-bg-image {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    overflow: hidden;
+    opacity: 0.35;
+    pointer-events: none;
+  }
+
+  .hero-bg-image::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url('bkg-2-optimized.jpg');
+    background-size: cover;
+    background-position: center;
+    filter: grayscale(1) contrast(1.15) brightness(1.05);
+  }
+
+  .hero-bg-image::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-color: #8FA37E;
+    mix-blend-mode: multiply;
   }
 
   .hero-content {
@@ -741,13 +717,7 @@
   </header>
 
   <section class="hero" id="home">
-    <div class="wave-bg wave-bg--animated" aria-hidden="true">
-      <svg viewBox="0 0 1440 480" preserveAspectRatio="xMidYMid slice">
-        <path class="wave-1" d="M-100,140 C80,90 180,180 320,130 C430,90 520,200 650,150 C760,110 840,190 960,140 C1080,95 1180,175 1300,135 C1380,110 1450,150 1540,130" />
-        <path class="wave-2" d="M-100,280 C60,320 200,230 300,270 C420,315 500,225 620,265 C740,305 820,220 940,260 C1060,300 1160,230 1280,270 C1380,300 1460,250 1540,275" />
-        <path class="wave-3" d="M-100,390 C100,360 220,420 350,385 C480,350 560,415 700,385 C820,360 900,410 1030,380 C1150,355 1240,405 1360,380 C1420,368 1480,390 1540,378" />
-      </svg>
-    </div>
+    <div class="hero-bg-image" aria-hidden="true"></div>
     <div class="hero-content">
       <h1>Beneath what you're feeling, there's usually <br class="hero-break">something trying to be heard</h1>
       <p>and here is where you can learn to listen to it.</p>
