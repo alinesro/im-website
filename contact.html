@@ -623,8 +623,12 @@
       if (!item || !trigger) return;
 
       trigger.addEventListener('click', function (e) {
-        e.preventDefault();
-        item.classList.toggle('is-open');
+        var isMobile = window.matchMedia('(max-width: 768px)').matches;
+        if (!isMobile) return;
+        if (!item.classList.contains('is-open')) {
+          e.preventDefault();
+          item.classList.add('is-open');
+        }
       });
     })();
 
