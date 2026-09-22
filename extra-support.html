@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Extra Support — Inner Meaning Wellbeing</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Marcellus&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #EDE8DC;
+    --card-bg: #F5F1E7;
+    --callout-bg: #ECE7D8;
+    --text: #3D3226;
+    --text-light: #5C5648;
+    --sage: #8FA37E;
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+
+  html, body {
+    margin: 0;
+    padding: 0;
+  }
+
+  body {
+    background-color: var(--bg);
+    color: var(--text);
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Marcellus', Georgia, 'Times New Roman', serif;
+  }
+
+  /* ---------- Header ---------- */
+
+  header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 84px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 clamp(20px, 5vw, 64px);
+    background-color: var(--bg);
+    z-index: 1000;
+  }
+
+  .logo img {
+    height: 76px;
+    display: block;
+    background: transparent;
+    border: none;
+    outline: none;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+  }
+
+  nav ul {
+    list-style: none;
+    display: flex;
+    gap: clamp(20px, 3vw, 48px);
+    margin: 0;
+    padding: 0;
+  }
+
+  nav a {
+    font-family: 'Jost', 'Helvetica Neue', Arial, sans-serif;
+    font-weight: 400;
+    font-size: 18px;
+    position: relative;
+    padding-bottom: 4px;
+  }
+
+  nav a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 0;
+    height: 1px;
+    background-color: var(--sage);
+    transition: width 0.3s ease;
+  }
+
+  nav a:hover::after {
+    width: 100%;
+  }
+
+  nav a.current {
+    color: var(--sage);
+  }
+
+  nav a.current::after {
+    width: 100%;
+  }
+
+  nav li.has-dropdown {
+    position: relative;
+  }
+
+  .dropdown {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2cm;
+    list-style: none;
+    margin: 0;
+    padding: 8px 0;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    min-width: 190px;
+    background-color: rgba(143, 163, 126, 0.55);
+    border-radius: 10px;
+    box-shadow: 0 8px 20px rgba(61, 50, 38, 0.12);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-6px);
+    transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s ease;
+    z-index: 1001;
+  }
+
+  .has-dropdown:hover .dropdown,
+  .has-dropdown.is-open .dropdown {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+
+  .dropdown a {
+    display: block;
+    padding: 4px 20px;
+    font-size: 16px;
+    white-space: nowrap;
+  }
+
+  .dropdown a::after {
+    content: none;
+  }
+
+  .dropdown a:hover {
+    color: var(--bg);
+  }
+
+  .dropdown li:first-child {
+    margin-top: 0.2cm;
+  }
+
+  .dropdown li:last-child {
+    margin-bottom: 0.2cm;
+  }
+
+  /* ---------- Page content ---------- */
+
+  main {
+    padding-top: 84px;
+  }
+
+  .container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 clamp(24px, 6vw, 80px);
+  }
+
+  .support-header {
+    text-align: center;
+    padding: 48px 0 16px;
+  }
+
+  .support-title {
+    font-weight: 400;
+    font-size: 42px;
+    line-height: 1.3;
+    margin: 0 0 28px;
+  }
+
+  .safety-notice {
+    background-color: var(--callout-bg);
+    border-radius: 14px;
+    padding: 20px 14px;
+    max-width: 650px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .notice-underline {
+    display: inline-block;
+    border-bottom: 1px solid var(--sage);
+    padding-bottom: 4px;
+    padding-left: 1.5cm;
+    padding-right: 1.5cm;
+  }
+
+  .safety-notice p {
+    margin: 0;
+    font-family: 'Jost', 'Helvetica Neue', Arial, sans-serif;
+    font-weight: 300;
+    font-size: 17px;
+    line-height: 1.7;
+    color: var(--text);
+  }
+
+  .resource-groups {
+    padding: 48px 0 96px;
+  }
+
+  .resource-groups .container {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5cm;
+  }
+
+  .resource-group-title {
+    font-weight: 400;
+    font-size: 24px;
+    padding-left: 26px;
+    margin: 0 0 20px;
+  }
+
+  .resource-cards {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .resource-card {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    background-color: var(--card-bg);
+    border: 1px solid rgba(143, 163, 126, 0.3);
+    border-radius: 14px;
+    padding: 18px 26px;
+  }
+
+  .resource-info {
+    flex: 1;
+  }
+
+  .resource-name {
+    font-family: 'Jost', 'Helvetica Neue', Arial, sans-serif;
+    font-weight: 600;
+    font-size: 17px;
+    color: var(--text);
+    margin: 0 0 4px;
+  }
+
+  .resource-desc {
+    font-family: 'Jost', 'Helvetica Neue', Arial, sans-serif;
+    font-weight: 300;
+    font-size: 14px;
+    line-height: 1.5;
+    color: var(--text-light);
+    margin: 0;
+  }
+
+  .resource-phone {
+    flex-shrink: 0;
+    font-family: 'Marcellus', Georgia, 'Times New Roman', serif;
+    font-size: 21px;
+    color: var(--sage);
+    white-space: nowrap;
+    text-decoration: none;
+  }
+
+  /* ---------- Footer ---------- */
+
+  footer {
+    background-color: var(--bg);
+    text-align: center;
+    padding: 0.3cm 24px;
+    border-top: 1px solid rgba(61, 50, 38, 0.12);
+  }
+
+  .footer-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+  }
+
+  .footer-logo {
+    display: block;
+    height: 61.5px;
+    width: auto;
+  }
+
+  .footer-copy {
+    font-family: 'Jost', 'Helvetica Neue', Arial, sans-serif;
+    font-weight: 300;
+    font-size: 0.85rem;
+    color: rgba(61, 50, 38, 0.6);
+    margin: 0;
+  }
+
+  .menu-toggle {
+    display: none;
+  }
+
+  .hamburger {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    width: 32px;
+    height: 32px;
+    cursor: pointer;
+    z-index: 1100;
+  }
+
+  .hamburger span {
+    display: block;
+    height: 2px;
+    width: 100%;
+    background-color: var(--text);
+    transition: transform 0.3s ease, opacity 0.3s ease;
+  }
+
+  /* ---------- Responsive ---------- */
+
+  @media (max-width: 768px) {
+    .dropdown {
+      position: static;
+      opacity: 1;
+      visibility: visible;
+      transform: none;
+      box-shadow: none;
+      background: transparent;
+      padding: 0;
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease;
+    }
+
+    .has-dropdown.is-open .dropdown {
+      max-height: 200px;
+      padding: 8px 0 0 16px;
+    }
+
+    .logo img {
+      height: 56px;
+    }
+
+    .support-title {
+      font-size: 32px;
+    }
+
+    .resource-card {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 10px;
+    }
+
+    .resource-phone {
+      font-size: 19px;
+    }
+
+    nav {
+      position: fixed;
+      top: 84px;
+      right: 0;
+      width: 240px;
+      height: calc(100vh - 84px);
+      background-color: var(--bg);
+      transform: translateX(100%);
+      transition: transform 0.35s ease;
+      box-shadow: -2px 0 12px rgba(61, 50, 38, 0.08);
+    }
+
+    nav ul {
+      flex-direction: column;
+      align-items: flex-start;
+      padding: 40px 32px;
+      gap: 28px;
+    }
+
+    .hamburger {
+      display: flex;
+    }
+
+    .menu-toggle:checked ~ nav {
+      transform: translateX(0);
+    }
+
+    .menu-toggle:checked ~ .hamburger span:nth-child(1) {
+      transform: translateY(7px) rotate(45deg);
+    }
+
+    .menu-toggle:checked ~ .hamburger span:nth-child(2) {
+      opacity: 0;
+    }
+
+    .menu-toggle:checked ~ .hamburger span:nth-child(3) {
+      transform: translateY(-7px) rotate(-45deg);
+    }
+  }
+</style>
+</head>
+<body>
+
+  <header>
+    <div class="logo">
+      <a href="index.html"><img src="logo.png" alt="Inner Meaning Wellbeing"></a>
+    </div>
+
+    <input type="checkbox" id="menu-toggle" class="menu-toggle">
+    <label for="menu-toggle" class="hamburger">
+      <span></span>
+      <span></span>
+      <span></span>
+    </label>
+
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li class="has-dropdown">
+          <a href="contact.html">Contact</a>
+          <ul class="dropdown">
+            <li><a href="book.html">Book a Session</a></li>
+            <li><a href="extra-support.html" class="current">Extra Support</a></li>
+          </ul>
+        </li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+
+    <section class="support-header">
+      <div class="container">
+        <h1 class="support-title">24/7 Crisis and Mental Health Support</h1>
+
+        <div class="safety-notice">
+          <p>If you or someone you know needs urgent help, please reach<br><span class="notice-underline">out to one of the 24/7 services below, or call <strong>000</strong> right away.</span></p>
+        </div>
+      </div>
+    </section>
+
+    <section class="resource-groups">
+      <div class="container">
+
+        <div class="resource-group">
+          <h2 class="resource-group-title">Crisis &amp; suicide support</h2>
+          <div class="resource-cards">
+            <div class="resource-card">
+              <div class="resource-info">
+                <p class="resource-name">Lifeline</p>
+                <p class="resource-desc">24/7 crisis support and suicide prevention.</p>
+              </div>
+              <a href="tel:131114" class="resource-phone">13 11 14</a>
+            </div>
+
+            <div class="resource-card">
+              <div class="resource-info">
+                <p class="resource-name">Suicide Call Back Service</p>
+                <p class="resource-desc">24/7 counselling for people feeling suicidal, worried about someone, or affected by suicide.</p>
+              </div>
+              <a href="tel:1300659467" class="resource-phone">1300 659 467</a>
+            </div>
+
+            <div class="resource-card">
+              <div class="resource-info">
+                <p class="resource-name">NSW Mental Health Line</p>
+                <p class="resource-desc">24/7 mental health advice, assessment and referral to NSW Health mental health services.</p>
+              </div>
+              <a href="tel:1800011511" class="resource-phone">1800 011 511</a>
+            </div>
+
+            <div class="resource-card">
+              <div class="resource-info">
+                <p class="resource-name">Beyond Blue</p>
+                <p class="resource-desc">24/7 mental health support for anxiety, depression and emotional distress.</p>
+              </div>
+              <a href="tel:1300224636" class="resource-phone">1300 22 4636</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="resource-group">
+          <h2 class="resource-group-title">Children &amp; young people</h2>
+          <div class="resource-cards">
+            <div class="resource-card">
+              <div class="resource-info">
+                <p class="resource-name">Kids Helpline</p>
+                <p class="resource-desc">24/7 counselling for children and young people aged 5–25.</p>
+              </div>
+              <a href="tel:1800551800" class="resource-phone">1800 55 1800</a>
+            </div>
+
+            <div class="resource-card">
+              <div class="resource-info">
+                <p class="resource-name">Child Protection Helpline</p>
+                <p class="resource-desc">24/7 line to report a child or young person at risk of harm.</p>
+              </div>
+              <a href="tel:132111" class="resource-phone">13 21 11</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="resource-group">
+          <h2 class="resource-group-title">Domestic, family &amp; sexual violence</h2>
+          <div class="resource-cards">
+            <div class="resource-card">
+              <div class="resource-info">
+                <p class="resource-name">1800RESPECT</p>
+                <p class="resource-desc">24/7 counselling and support for people impacted by domestic, family or sexual violence.</p>
+              </div>
+              <a href="tel:1800737732" class="resource-phone">1800 737 732</a>
+            </div>
+
+            <div class="resource-card">
+              <div class="resource-info">
+                <p class="resource-name">NSW Domestic Violence Line</p>
+                <p class="resource-desc">24/7 crisis counselling, advocacy and referrals for women, with or without children, experiencing domestic or family violence.</p>
+              </div>
+              <a href="tel:1800656463" class="resource-phone">1800 656 463</a>
+            </div>
+
+            <div class="resource-card">
+              <div class="resource-info">
+                <p class="resource-name">NSW Rape Crisis</p>
+                <p class="resource-desc">Statewide phone and online crisis counselling for anyone impacted by sexual violence, including trauma counselling for adults sexually assaulted as children.</p>
+              </div>
+              <a href="tel:1800424017" class="resource-phone">1800 424 017</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="resource-group">
+          <h2 class="resource-group-title">Alcohol &amp; other drugs</h2>
+          <div class="resource-cards">
+            <div class="resource-card">
+              <div class="resource-info">
+                <p class="resource-name">Alcohol &amp; Drug Information Service (ADIS)</p>
+                <p class="resource-desc">24/7 advice, information, counselling and referrals for those affected by alcohol or other drug use.</p>
+              </div>
+              <a href="tel:1800250015" class="resource-phone">1800 250 015</a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="footer-content">
+      <img src="logo-2.png" alt="Inner Meaning Wellbeing" class="footer-logo">
+      <p class="footer-copy">&copy; 2026 Inner Meaning Wellbeing. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      var item = document.querySelector('.has-dropdown');
+      var trigger = item ? item.querySelector('a') : null;
+      if (!item || !trigger) return;
+
+      trigger.addEventListener('click', function (e) {
+        e.preventDefault();
+        item.classList.toggle('is-open');
+      });
+    })();
+  </script>
+
+</body>
+</html>

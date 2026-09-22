@@ -104,10 +104,65 @@
     width: 100%;
   }
 
+  nav li.has-dropdown {
+    position: relative;
+  }
+
+  .dropdown {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2cm;
+    list-style: none;
+    margin: 0;
+    padding: 8px 0;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    min-width: 190px;
+    background-color: rgba(143, 163, 126, 0.55);
+    border-radius: 10px;
+    box-shadow: 0 8px 20px rgba(61, 50, 38, 0.12);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-6px);
+    transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s ease;
+    z-index: 1001;
+  }
+
+  .has-dropdown:hover .dropdown,
+  .has-dropdown.is-open .dropdown {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+
+  .dropdown a {
+    display: block;
+    padding: 4px 20px;
+    font-size: 16px;
+    white-space: nowrap;
+  }
+
+  .dropdown a::after {
+    content: none;
+  }
+
+  .dropdown a:hover {
+    color: var(--bg);
+  }
+
+  .dropdown li:first-child {
+    margin-top: 0.2cm;
+  }
+
+  .dropdown li:last-child {
+    margin-bottom: 0.2cm;
+  }
+
   /* ---------- Shared content sections ---------- */
 
   main {
-    padding-top: 124px;
+    padding-top: 84px;
   }
 
   .container {
@@ -121,7 +176,20 @@
   }
 
   .content-section:first-of-type {
-    padding-top: 16px;
+    padding-top: calc(16px + 1cm);
+  }
+
+  .content-section:nth-of-type(odd) {
+    background-color: #ece7d9;
+  }
+
+  .content-section:nth-of-type(even) {
+    background-color: #f2ede1;
+  }
+
+  .person-section {
+    position: relative;
+    overflow: visible;
   }
 
   .section-title {
@@ -141,37 +209,187 @@
     margin: 0;
   }
 
-  .two-col {
-    display: flex;
-    gap: 64px;
-    align-items: center;
+  .about-intro .container {
+    max-width: 1360px;
   }
 
-  .two-col .col-text {
+  .about-title {
+    text-align: center;
+  }
+
+  .accent-green {
+    color: var(--sage);
+  }
+
+  .about-text {
+    text-align: center;
+    max-width: calc(760px + 7cm);
+    margin: 0 auto;
+  }
+
+  .two-col {
+    display: flex;
+    gap: 2cm;
+    align-items: flex-start;
+    margin-left: -4.5cm;
+    margin-right: -0.8cm;
+  }
+
+  .two-col .col-text,
+  .two-col .col-heading {
     flex: 1;
   }
 
   .two-col .col-photo {
-    flex: 0 0 320px;
+    flex: 0 0 440px;
   }
 
-  .photo-placeholder {
+  .photo-frame {
     width: 100%;
-    aspect-ratio: 1 / 1;
-    background-color: #DACFB8;
-    border-radius: 24px;
+    height: 520px;
+    border-radius: 50%;
+    overflow: hidden;
+  }
+
+  .oval-photo {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 12%;
+    transform: scale(1.2);
+    transform-origin: center 15%;
+  }
+
+  .person-text {
+    max-width: calc(760px + 6cm);
+    margin-top: 1cm;
+  }
+
+  .person-text + .person-text {
+    margin-top: 1.2em;
+  }
+
+  .work-section .container {
+    max-width: calc(1240px + 1.5cm);
+  }
+
+  .work-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+    align-items: start;
+  }
+
+  .work-box {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: #FBF7EF;
+    border: 1px solid rgba(124, 143, 110, 0.3);
+    border-radius: 14px;
+    padding: 24px 28px;
+    min-height: 112px;
+  }
+
+  .work-box-header {
+    position: relative;
+    display: block;
+    width: 100%;
+    margin: 0;
+    padding: 0 32px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    text-align: center;
+  }
+
+  .work-box-title {
+    display: inline-block;
+    font-family: 'Marcellus', Georgia, 'Times New Roman', serif;
+    font-weight: 400;
+    font-size: 1.3rem;
+    color: var(--text);
+    text-wrap: balance;
+  }
+
+  .work-plus {
+    position: absolute;
+    top: 50%;
+    right: 0;
+    transform: translateY(-50%);
+    flex-shrink: 0;
+    width: 22px;
+    height: 22px;
+  }
+
+  .work-plus::before,
+  .work-plus::after {
+    content: '';
+    position: absolute;
+    background-color: #B5714B;
+    transition: transform 0.2s ease;
+  }
+
+  .work-plus::before {
+    top: 50%;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    transform: translateY(-50%);
+  }
+
+  .work-plus::after {
+    left: 50%;
+    top: 0;
+    height: 100%;
+    width: 2px;
+    transform: translateX(-50%);
+  }
+
+  .work-box.is-open .work-plus::after {
+    transform: translateX(-50%) rotate(90deg);
+    opacity: 0;
+  }
+
+  .work-box-answer {
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    margin-top: 0;
+    transition: max-height 0.3s ease, opacity 0.25s ease, margin-top 0.25s ease;
+  }
+
+  .work-box.is-open .work-box-answer {
+    opacity: 1;
+    margin-top: 16px;
+  }
+
+  .work-box-answer-inner p {
+    margin: 0;
+    font-family: 'Jost', 'Helvetica Neue', Arial, sans-serif;
+    font-weight: 300;
+    font-size: 1rem;
+    line-height: 1.75;
+    color: var(--text);
+    text-align: center;
+  }
+
+  .work-box-answer-inner p + p {
+    margin-top: 1em;
   }
 
   .btn {
     display: inline-block;
-    background-color: var(--sage);
-    color: var(--bg);
+    background-color: #9dae8c;
+    color: #f2ede1;
     font-family: 'Jost', 'Helvetica Neue', Arial, sans-serif;
-    font-weight: 500;
+    font-weight: 400;
     font-size: 1rem;
-    letter-spacing: 0.03em;
-    padding: 16px 44px;
-    border-radius: 40px;
+    padding: 16px 40px;
+    border-radius: 999px;
+    border: none;
+    cursor: pointer;
     transition: background-color 0.3s ease, transform 0.3s ease;
   }
 
@@ -182,7 +400,22 @@
 
   .cta {
     text-align: center;
-    padding: 40px 0 96px;
+    padding: 64px 0;
+  }
+
+  .cta-title {
+    color: var(--sage);
+  }
+
+  .cta-text {
+    font-family: 'Jost', 'Helvetica Neue', Arial, sans-serif;
+    font-weight: 300;
+    font-size: 1.2rem;
+    line-height: 1.75;
+    color: var(--text);
+    max-width: none;
+    white-space: nowrap;
+    margin: 0 auto 28px;
   }
 
   .quote {
@@ -220,7 +453,7 @@
   footer {
     background-color: var(--bg);
     text-align: center;
-    padding: 0.5cm 24px;
+    padding: 0.3cm 24px;
     border-top: 1px solid rgba(61, 50, 38, 0.12);
   }
 
@@ -271,6 +504,36 @@
   /* ---------- Responsive ---------- */
 
   @media (max-width: 768px) {
+    .dropdown {
+      position: static;
+      opacity: 1;
+      visibility: visible;
+      transform: none;
+      box-shadow: none;
+      background: transparent;
+      padding: 0;
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease;
+    }
+
+    .has-dropdown.is-open .dropdown {
+      max-height: 200px;
+      padding: 8px 0 0 16px;
+    }
+
+    .logo img {
+      height: 56px;
+    }
+
+    .cta-text {
+      white-space: normal;
+    }
+
+    .work-grid {
+      grid-template-columns: 1fr;
+    }
+
     nav {
       position: fixed;
       top: 84px;
@@ -313,12 +576,14 @@
     .two-col {
       flex-direction: column;
       gap: 32px;
+      margin-left: 0;
     }
 
     .two-col .col-photo {
       flex: 0 0 auto;
       width: 100%;
       max-width: 320px;
+      margin-top: 0;
     }
   }
 </style>
@@ -341,56 +606,79 @@
       <ul>
         <li><a href="index.html">Home</a></li>
         <li><a href="about.html" class="current">About</a></li>
-        <li><a href="book.html">Book a Session</a></li>
+        <li class="has-dropdown">
+          <a href="contact.html">Contact</a>
+          <ul class="dropdown">
+            <li><a href="book.html">Book a Session</a></li>
+            <li><a href="extra-support.html">Extra Support</a></li>
+          </ul>
+        </li>
       </ul>
     </nav>
   </header>
 
   <main>
 
-    <section class="content-section">
+    <section class="content-section about-intro">
       <div class="container">
-        <h1 class="section-title">About Inner Meaning Wellbeing</h1>
-        <p class="section-text">Inner Meaning Wellbeing exists to make room for what sits beneath the story a person tells first — the argument, the job, the move. Underneath that lives something older: how the person learned to read themselves, and what they decided made them who they are. Events don't arrive raw, they arrive already interpreted; two people lose the same job, and one feels a door closing while the other hears confirmation of something they always suspected about themselves. The difference isn't in the event, but in the meaning attached to it — usually built early on, from experiences the person was too young to question. Meanings built early can be revisited. That's the premise of the work here.</p>
+        <h1 class="section-title about-title">About <span class="accent-green">Inner Meaning Wellbeing</span></h1>
+        <p class="section-text about-text">Inner Meaning Wellbeing exists to make room for what sits beneath the story a person tells first, the argument, the job, the move. Underneath that lives something older: how the person learned to read themselves, and what they decided made them who they are. Events don't arrive raw, they arrive already interpreted; two people lose the same job, and one feels a door closing while the other hears confirmation of something they always suspected about themselves. The difference isn't in the event, but in the meaning attached to it, usually built early on, from experiences the person was too young to question. Meanings built early can be revisited. That's the premise of the work here.</p>
       </div>
     </section>
 
-    <section class="content-section">
+    <section class="content-section person-section">
       <div class="container">
         <div class="two-col">
-          <div class="col-text">
-            <h2 class="section-title">The person behind the counsellor</h2>
-            <p class="section-text">I'm Aline, 30 years old, born and raised in Brazil, living in Sydney since 2023. I'm passionate about philosophy, and art is my favourite hobby. On weekends I try to step away from screens and reconnect with myself and the people I love. I've been in therapy myself for over ten years — that's where I learned to look at myself with more lightness, compassion, and care, and that's what I bring to my clients.</p>
-          </div>
           <div class="col-photo">
-            <div class="photo-placeholder"></div>
+            <div class="photo-frame">
+              <img src="IMG_0372-optimized.jpg" alt="Aline, registered counsellor" class="oval-photo">
+            </div>
+          </div>
+          <div class="col-heading">
+            <h2 class="section-title">Hi, I'm Aline</h2>
+            <p class="section-text person-text">I'm 30 years old, born and raised in Brazil, living in Sydney since 2023. I'm passionate about philosophy, and art is my favourite hobby.</p>
+            <p class="section-text person-text">My background started in Psychology, followed by postgraduate training in Cognitive Behavioural Therapy (CBT) and Schema Therapy, both completed in Brazil. There, I worked as a clinical psychologist in private practice, and as a social psychologist for the council, supporting the elderly community navigating family violence, neglect, and abuse.</p>
+            <p class="section-text person-text">Here in Australia, I'm a Registered Counsellor with the Australian Counselling Association (Member 87029). I work with adults, in both English and Portuguese.</p>
           </div>
         </div>
       </div>
     </section>
 
-    <section class="content-section">
+    <section class="content-section work-section">
       <div class="container">
-        <h2 class="section-title">My professional background</h2>
-        <p class="section-text">My background started in Psychology, followed by postgraduate training in Cognitive Behavioural Therapy (CBT) and Schema Therapy, both completed in Brazil. Here in Australia, I work as a registered counsellor with the Australian Counselling Association (Member 87029). I work with adults, in both English and Portuguese. What comes up most often in this room is anxiety, excessive worry and ruminating thoughts, self-criticism, self-esteem and perfectionism, relationships, boundaries and emotional dependency, and life transitions — including the particular weight of building a life far from where it all began.</p>
-      </div>
-    </section>
+        <div class="work-grid">
+          <div class="work-box" data-work-box>
+            <button class="work-box-header" type="button" aria-expanded="false">
+              <span class="work-box-title">How I work</span>
+              <span class="work-plus" aria-hidden="true"></span>
+            </button>
+            <div class="work-box-answer">
+              <div class="work-box-answer-inner">
+                <p>I particularly enjoy using a CBT formulation early on, helping you map out how a situation, a thought, a feeling and a behaviour connects, and using Schema Therapy for understanding the patterns formed early in life that still shape how you see yourself and what you expect from others. Alongside this, I bring in other evidence-based methods such as Acceptance and Commitment Therapy (ACT), Dialectical Behaviour Therapy (DBT), mindfulness, and Solution-Focused work, adapting the mix to whichever approach fits your needs and goals best.</p>
+              </div>
+            </div>
+          </div>
 
-    <section class="content-section">
-      <div class="container">
-        <h2 class="section-title">How I work</h2>
-        <p class="section-text">The foundation of my work is Cognitive Behavioural Therapy (CBT), which teaches that while we can't control everything, we can work with our thoughts and how we respond to situations. Through its techniques, we learn to make our thinking more flexible and to regulate our emotions. It's considered a gold-standard approach for many concerns, grounded in evidence-based practice. Schema Therapy is also part of the work, since it looks further back, at the patterns formed early in life that still shape how a person sees themselves and what they expect from others.</p>
-      </div>
-    </section>
-
-    <section class="content-section">
-      <div class="container">
-        <h2 class="section-title">What you can expect from our work together</h2>
-        <p class="section-text">The goal of my work is to help you revisit the meanings you carry and build a steadier, kinder relationship with yourself. I work on social skills and assertive communication, help regulate emotions, build self-respect and self-care, and address what comes with moving to a new country — starting over professionally, being far from family, and finding your place between two cultures.</p>
+          <div class="work-box" data-work-box>
+            <button class="work-box-header" type="button" aria-expanded="false">
+              <span class="work-box-title">What you can expect from our work&nbsp;together</span>
+              <span class="work-plus" aria-hidden="true"></span>
+            </button>
+            <div class="work-box-answer">
+              <div class="work-box-answer-inner">
+                <p>My goal is to offer you a space where you can look again at the meanings you've been carrying, and slowly build a kinder, more settled relationship with yourself. That means finding your voice, setting boundaries, steadying your emotions, and growing a real sense of self-respect and care.</p>
+                <p>In that process, I'll walk alongside you and gently challenge you when it helps. My role isn't to hand you answers, but to help you see what's been quietly getting in the way, and recognise the patterns running through your thoughts, feelings and relationships.</p>
+                <p>A big part of how I do that is helping you understand the "why" behind what you're experiencing (in plain, relatable terms, grounded in evidence) so therapy doesn't only feel supportive, it makes sense. And because no two people are the same, I shape each session around your own needs, goals and experiences, so you leave with more clarity, a deeper understanding of yourself, and practical ways to keep moving forward.</p>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
 
     <div class="cta">
+      <h2 class="section-title cta-title">Ready to take the first step?</h2>
+      <p class="cta-text">If something in this resonated, that's often where the work quietly begins, and I'd love to help you take it further.</p>
       <a href="book.html" class="btn">Book a Session</a>
     </div>
 
@@ -402,6 +690,34 @@
       <p class="footer-copy">&copy; 2026 Inner Meaning Wellbeing. All rights reserved.</p>
     </div>
   </footer>
+
+  <script>
+    (function () {
+      var item = document.querySelector('.has-dropdown');
+      var trigger = item ? item.querySelector('a') : null;
+      if (!item || !trigger) return;
+
+      trigger.addEventListener('click', function (e) {
+        e.preventDefault();
+        item.classList.toggle('is-open');
+      });
+    })();
+    (function () {
+      var boxes = document.querySelectorAll('[data-work-box]');
+      if (!boxes.length) return;
+
+      boxes.forEach(function (box) {
+        var button = box.querySelector('.work-box-header');
+        var answer = box.querySelector('.work-box-answer');
+
+        button.addEventListener('click', function () {
+          var isOpen = box.classList.toggle('is-open');
+          button.setAttribute('aria-expanded', String(isOpen));
+          answer.style.maxHeight = isOpen ? answer.scrollHeight + 'px' : '0px';
+        });
+      });
+    })();
+  </script>
 
 </body>
 </html>

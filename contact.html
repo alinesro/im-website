@@ -3,13 +3,13 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<title>Book a Session — Inner Meaning Wellbeing</title>
+<title>Contact — Inner Meaning Wellbeing</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Marcellus&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
   :root {
-    --bg: #f2ede1;
+    --bg: #EDE8DC;
     --text: #3D3226;
     --sage: #8FA37E;
   }
@@ -51,13 +51,8 @@
     align-items: center;
     justify-content: space-between;
     padding: 0 clamp(20px, 5vw, 64px);
-    background-color: transparent;
-    transition: background-color 0.3s ease;
-    z-index: 1000;
-  }
-
-  header.is-scrolled {
     background-color: var(--bg);
+    z-index: 1000;
   }
 
   .logo img {
@@ -167,7 +162,7 @@
   /* ---------- Shared content sections ---------- */
 
   main {
-    padding-top: 124px;
+    padding-top: 84px;
   }
 
   .container {
@@ -181,45 +176,7 @@
   }
 
   .content-section:first-of-type {
-    padding-top: 16px;
-  }
-
-  .section-title {
-    font-weight: 400;
-    font-size: clamp(1.9rem, 3.2vw, 2.6rem);
-    line-height: 1.3;
-    margin: 0 0 24px 0;
-  }
-
-  .section-text {
-    font-family: 'Jost', 'Helvetica Neue', Arial, sans-serif;
-    font-weight: 300;
-    font-size: 1.1rem;
-    line-height: 1.85;
-    color: var(--text);
-    max-width: 760px;
-    margin: 0;
-  }
-
-  .two-col {
-    display: flex;
-    gap: 64px;
-    align-items: center;
-  }
-
-  .two-col .col-text {
-    flex: 1;
-  }
-
-  .two-col .col-photo {
-    flex: 0 0 320px;
-  }
-
-  .photo-placeholder {
-    width: 100%;
-    aspect-ratio: 1 / 1;
-    background-color: #DACFB8;
-    border-radius: 24px;
+    padding-top: calc(16px + 1cm);
   }
 
   .btn {
@@ -241,99 +198,7 @@
     transform: translateY(-2px);
   }
 
-  .cta {
-    text-align: center;
-    padding: 40px 0 96px;
-  }
-
-  .book-hero {
-    position: relative;
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    overflow: hidden;
-  }
-
-  .book-hero-bg {
-    position: absolute;
-    inset: 0;
-    z-index: 0;
-    background-image: url('bkg-5-optimized.jpg');
-    background-size: cover;
-    background-position: center;
-    opacity: 0.37;
-  }
-
-  .book-hero .container {
-    max-width: 1300px;
-  }
-
-  .book-quote {
-    position: relative;
-    z-index: 1;
-    font-family: 'Marcellus', Georgia, 'Times New Roman', serif;
-    font-weight: 400;
-    font-size: 33px;
-    line-height: 1.6;
-    color: var(--text);
-    text-align: center;
-    max-width: 1000px;
-    text-wrap: balance;
-    margin: -0.5cm auto 0;
-  }
-
-  .book-subtext {
-    position: absolute;
-    z-index: 1;
-    bottom: 3.5cm;
-    left: 50%;
-    font-family: 'Jost', 'Helvetica Neue', Arial, sans-serif;
-    font-weight: 300;
-    font-size: 22px;
-    color: var(--text);
-    text-align: center;
-    width: max-content;
-    max-width: none;
-    white-space: nowrap;
-    transform: translateX(-50%);
-  }
-
-  .contact-section {
-    position: relative;
-    background-color: #ece7d9;
-  }
-
-  .contact-section .container {
-    position: relative;
-    z-index: 1;
-  }
-
-  .book-photo-wrap {
-    position: relative;
-    z-index: 2;
-    display: flex;
-    justify-content: center;
-    margin-top: calc(-30px - 1.5cm);
-    margin-bottom: 32px;
-  }
-
-  .book-photo-frame {
-    width: 340px;
-    height: 420px;
-    border-radius: 50%;
-    overflow: hidden;
-  }
-
-  .book-photo {
-    display: block;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center 15%;
-    transform: scale(1.1);
-    transform-origin: center 15%;
-  }
+  /* ---------- Contact grid ---------- */
 
   .contact-grid {
     display: grid;
@@ -464,10 +329,10 @@
 
   .urgent-support-link {
     display: inline-block;
-    margin-top: calc(76px - 1cm);
+    margin-top: 76px;
     font-family: 'Jost', 'Helvetica Neue', Arial, sans-serif;
     font-weight: 300;
-    font-size: 16px;
+    font-size: 14px;
     color: rgba(61, 50, 38, 0.55);
     text-decoration: none;
   }
@@ -476,33 +341,16 @@
     text-decoration: underline;
   }
 
+  /* ---------- Footer ---------- */
+
   footer {
-    position: relative;
-    background-color: #ece7d9;
+    background-color: var(--bg);
     text-align: center;
     padding: 0.3cm 24px;
-  }
-
-  footer::before {
-    content: '';
-    position: absolute;
-    right: 0;
-    bottom: 0;
-    width: 800px;
-    height: 750px;
-    z-index: 0;
-    background-image: url('bkg-bk1-optimized.jpg');
-    background-repeat: no-repeat;
-    background-position: right bottom;
-    background-size: cover;
-    mix-blend-mode: multiply;
-    opacity: 0.3;
-    pointer-events: none;
+    border-top: 1px solid rgba(61, 50, 38, 0.12);
   }
 
   .footer-content {
-    position: relative;
-    z-index: 1;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -583,12 +431,6 @@
       gap: 18px;
     }
 
-    .book-subtext {
-      white-space: normal;
-      width: 90%;
-      max-width: 500px;
-    }
-
     nav {
       position: fixed;
       top: 84px;
@@ -627,21 +469,6 @@
     .menu-toggle:checked ~ .hamburger span:nth-child(3) {
       transform: translateY(-7px) rotate(-45deg);
     }
-
-    .two-col {
-      flex-direction: column;
-      gap: 32px;
-    }
-
-    .two-col .col-photo {
-      flex: 0 0 auto;
-      width: 100%;
-      max-width: 320px;
-    }
-
-    .contact-item {
-      font-size: 1rem;
-    }
   }
 </style>
 </head>
@@ -664,9 +491,9 @@
         <li><a href="index.html">Home</a></li>
         <li><a href="about.html">About</a></li>
         <li class="has-dropdown">
-          <a href="contact.html">Contact</a>
+          <a href="contact.html" class="current">Contact</a>
           <ul class="dropdown">
-            <li><a href="book.html" class="current">Book a Session</a></li>
+            <li><a href="book.html">Book a Session</a></li>
             <li><a href="extra-support.html">Extra Support</a></li>
           </ul>
         </li>
@@ -674,97 +501,8 @@
     </nav>
   </header>
 
-  <section class="book-hero">
-    <div class="book-hero-bg" aria-hidden="true"></div>
-    <div class="container">
-      <p class="book-quote">There is something quietly powerful about being met with curiosity instead of judgment. It's often the first light that reaches the parts of us we've kept hidden even from ourselves.</p>
-      <p class="book-subtext">Reaching out can feel like a big step. It doesn't have to be a certain one, just the first.</p>
-    </div>
-  </section>
-
-  <section class="content-section contact-section">
-    <div class="book-photo-wrap">
-      <div class="book-photo-frame">
-        <img src="IMG_0386-optimized.jpg" alt="Aline, registered counsellor" class="book-photo">
-      </div>
-    </div>
-    <div class="container">
-      <div class="contact-grid">
-        <div class="contact-form-col">
-          <h2 class="section-title contact-form-title">For any inquiries, please feel free to reach out using this form. I'll get back to you within 2 business days.</h2>
-
-          <form class="contact-form">
-            <div class="form-row">
-              <div class="form-field">
-                <label for="first_name">First name <span class="required-mark">*</span></label>
-                <input type="text" id="first_name" name="first_name" required>
-              </div>
-
-              <div class="form-field">
-                <label for="last_name">Last name <span class="required-mark">*</span></label>
-                <input type="text" id="last_name" name="last_name" required>
-              </div>
-            </div>
-
-            <div class="form-field">
-              <label for="email">Email <span class="required-mark">*</span></label>
-              <input type="email" id="email" name="email" required>
-            </div>
-
-            <div class="form-field">
-              <label for="mobile">Mobile <span class="required-mark">*</span></label>
-              <input type="tel" id="mobile" name="mobile" required>
-            </div>
-
-            <div class="form-field">
-              <label for="message">Message <span class="required-mark">*</span></label>
-              <textarea id="message" name="message" rows="3" required></textarea>
-            </div>
-
-            <button type="submit" class="btn contact-submit">Send</button>
-          </form>
-        </div>
-
-        <div class="contact-direct-col">
-          <p class="contact-direct-intro">Or, if you prefer, you can reach me directly:</p>
-
-          <div class="contact-direct-list">
-            <a href="tel:+61452406202" class="contact-direct-item">
-              <span class="contact-icon" aria-hidden="true">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/>
-                </svg>
-              </span>
-              <span>+61 452 406 202</span>
-            </a>
-
-            <a href="mailto:psialinesa@gmail.com" class="contact-direct-item">
-              <span class="contact-icon" aria-hidden="true">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                  <rect x="2" y="4" width="20" height="16" rx="2"/>
-                  <path d="m22 6-10 7L2 6"/>
-                </svg>
-              </span>
-              <span>psialinesa@gmail.com</span>
-            </a>
-
-            <a href="https://instagram.com/psialinesa" target="_blank" rel="noopener" class="contact-direct-item">
-              <span class="contact-icon" aria-hidden="true">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                  <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
-                  <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
-                  <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
-                </svg>
-              </span>
-              <span>@psialinesa</span>
-            </a>
-          </div>
-
-          <a href="extra-support.html" class="urgent-support-link">Need urgent support?</a>
-        </div>
-      </div>
-    </div>
-  </section>
+  <main>
+  </main>
 
   <footer>
     <div class="footer-content">
@@ -783,16 +521,6 @@
         e.preventDefault();
         item.classList.toggle('is-open');
       });
-    })();
-    (function () {
-      var header = document.querySelector('header');
-
-      function updateHeader() {
-        if (header) header.classList.toggle('is-scrolled', window.scrollY > 0);
-      }
-
-      updateHeader();
-      window.addEventListener('scroll', updateHeader, { passive: true });
     })();
   </script>
 
