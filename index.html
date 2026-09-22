@@ -400,6 +400,10 @@
     margin: 0 0 28px 0;
   }
 
+  .mobile-break {
+    display: none;
+  }
+
   .hero-content p {
     font-family: 'Jost', 'Helvetica Neue', Arial, sans-serif;
     font-weight: 300;
@@ -794,6 +798,10 @@
       display: none;
     }
 
+    .mobile-break {
+      display: inline;
+    }
+
     .two-col {
       flex-direction: column;
       gap: 32px;
@@ -863,7 +871,7 @@
   <section class="hero" id="home">
     <div class="hero-bg-image" aria-hidden="true"></div>
     <div class="hero-content">
-      <h1>Beneath what you're feeling, there's usually <br class="hero-break">something trying to be heard</h1>
+      <h1>Beneath what you're feeling, there's usually <br class="hero-break">something trying <br class="mobile-break">to be heard</h1>
       <p>and here is where you can learn to listen to it.</p>
       <a href="book.html" class="btn hero-cta">Book a session</a>
     </div>
