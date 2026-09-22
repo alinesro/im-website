@@ -340,6 +340,17 @@
       display: inline;
       padding-left: 0;
       padding-right: 0;
+      border-bottom: none;
+    }
+
+    .safety-notice p::after {
+      content: "";
+      display: block;
+      width: 60%;
+      max-width: 220px;
+      height: 1px;
+      background-color: var(--sage);
+      margin: 14px auto 0;
     }
 
     .dropdown {
